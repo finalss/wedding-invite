@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[新郎姓名] & [新娘姓名] 婚礼邀请</title>
+    <style>
+        /* 整体样式 */
+        body {
+            font-family: 'SimSun', 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F8F8F8; /* 浅灰色背景 */
+            color: #333;
+            text-align: center;
+        }
+
+        /* 容器样式 */
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #FFFFFF; /* 白色卡片背景 */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 标题和分割线 */
+        h1 {
+            color: #8B0000; /* 深红色标题 */
+            font-size: 2em;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #DDA0DD; /* 紫色分割线 */
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        h2 {
+            color: #A52A2A; /* 棕红色副标题 */
+            font-size: 1.5em;
+            margin-top: 25px;
+        }
+
+        /* 邀请卡文字 */
+        .invitation-text {
+            line-height: 1.8;
+            font-size: 1.1em;
+            margin: 20px 0;
+            color: #555;
+        }
+
+        /* 核心信息高亮 */
+        .highlight {
+            color: #8B0000;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* 婚礼地点/时间卡片 */
+        .details-card {
+            background-color: #FFF0F5; /* 浅粉色背景 */
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+            border: 1px solid #DDA0DD;
+        }
+
+        .details-card p {
+            margin: 8px 0;
+        }
+
+        /* 底部签名 */
+        .signature {
+            margin-top: 30px;
+            font-style: italic;
+            color: #777;
+        }
+        
+        /* 图片样式 (如果添加照片) */
+        .photo {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 3px solid #DDA0DD;
+        }
+        
+        /* 按钮样式 (如果需要回执链接) */
+        .rsvp-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #8B0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .rsvp-button:hover {
+            background-color: #A52A2A;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>💍 爱的邀请 💍</h1>
+
+        <h2>[新郎姓名] & [新娘姓名]</h2>
+
+        <div class="invitation-text">
+            亲爱的亲友：<br>
+            谨定于 <span class="highlight">[公历日期] (星期[几])</span> 举行结婚典礼。<br>
+            诚挚邀请您携家人莅临，共同见证我们幸福的时刻！
+        </div>
+
+        <div class="details-card">
+            <p>🤵 **新郎：** [新郎姓名]</p>
+            <p>👰 **新娘：** [新娘姓名]</p>
+            <p>⏰ **仪式时间：** <span class="highlight">[具体时间，例如：下午 18:00]</span></p>
+            <p>📍 **婚宴地点：** <span class="highlight">[酒店/宴会厅全称]</span></p>
+            <p>🗺️ **详细地址：** [详细地址]</p>
+            <p>📞 **联系电话：** [新人电话]</p>
+            
+            <p><a href="[您的导航地图链接]" target="_blank" class="highlight">点击查看导航地图</a></p>
+        </div>
+        
+        <a href="[您的宾客回执/RSVP表单链接]" class="rsvp-button">💖 确认出席回执 💖</a>
+
+        <div class="signature">
+            [新郎姓名] & [新娘姓名] 敬邀
+        </div>
+    </div>
+
+</body>
+</html>
