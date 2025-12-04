@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>爱的邀请 | [新郎姓名] & [新娘姓名] 婚礼</title>
+    <title>爱的邀请 | 吴濯 & 左婉馨 婚礼</title>
     <style>
         /* 1. 基础样式和字体 */
         body {
@@ -106,3 +106,195 @@
             margin: 20px;
             text-align: left; /* 内容保持左对齐 */
             border: 1px solid #F0E6D8;
+        }
+
+        .detail-item {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .detail-title {
+            color: #A52A2A; 
+            font-weight: bold;
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .highlight {
+            color: #A52A2A;
+            font-weight: bold;
+        }
+
+        /* 6. 按钮和回执样式 */
+        .button-group {
+            margin-top: 25px;
+            text-align: center; /* 按钮居中 */
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn-rsvp {
+            background-color: #A52A2A;
+            color: white;
+            border: 1px solid #A52A2A;
+        }
+        .btn-map {
+            background-color: #FFFFFF;
+            color: #A52A2A;
+            border: 1px solid #A52A2A;
+        }
+        .btn-rsvp:hover { background-color: #8B0000; }
+        .btn-map:hover { background-color: #FDF9F3; }
+
+
+        /* 7. 照片墙样式 */
+        .photo-wall {
+            padding: 20px;
+            text-align: center;
+        }
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 10px; 
+            margin-top: 15px;
+        }
+        .grid-img {
+            width: 100%;
+            height: 100px; 
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        .section-title {
+            font-size: 1.8em;
+            color: #4C2B29;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #F0E6D8;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .music-button {
+            padding: 8px 15px; 
+            background-color: #A52A2A; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+            font-size: 0.9em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function toggleMusic() {
+            var music = document.getElementById('background-music');
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+        // 尝试在页面加载完成后播放，以绕过某些PC端的限制
+        window.onload = function() {
+            var music = document.getElementById('background-music');
+            var playPromise = music.play();
+            
+            // 捕捉未被用户允许的自动播放错误
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    // 如果自动播放被阻止，则安静失败，等待用户手动点击
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="music-control-area">
+            <audio id="background-music" src="[请替换为您的MP3音乐文件URL]" loop></audio>
+            <button onclick="toggleMusic()" class="music-button">
+                🎵 播放/暂停 💖
+            </button>
+        </div>
+
+        <div class="cover-area">
+            <div class="cover-photo-container">
+                <img src="[请替换为您的封面婚纱照URL]" alt="新人封面合影" class="cover-photo">
+            </div>
+            
+            <div class="cover-text">
+                <p class="heart-icon">💍 爱的邀请 💖</p>
+                <p class="title-main">谨邀</p>
+                <p class="title-names">吴濯 & 左婉馨</p>
+                <div class="title-line"></div>
+                <p class="title-slogan">余生漫漫，幸得有你。诚邀您见证我们的幸福时刻。</p>
+            </div>
+        </div>
+
+        <div class="details-card">
+            <h2 class="section-title" style="margin: 0 auto 20px auto; text-align: center;">🗓 婚礼时间地点</h2>
+
+            <div class="detail-item">
+                <span class="detail-title">婚礼日期</span>
+                <span class="highlight">[公历日期，例如：2026年 5月 20日 (星期六)]</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-title">典礼时间</span>
+                <span class="highlight">[具体时间，例如：下午 18:00 (17:30 恭候入场)]</span>
+            </div>
+            
+            <div class="detail-item">
+                <span class="detail-title">婚宴地点</span>
+                <span class="highlight">[酒店/宴会厅全称]</span>
+                <br>
+                [详细地址]
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-title">新人联络</span>
+                新郎 [新郎姓名]：[电话] <br>
+                新娘 [新娘姓名]：[电话]
+            </div>
+
+            <div class="button-group">
+                <a href="[您的宾客回执/RSVP表单链接]" target="_blank" class="btn btn-rsvp">💖 确认出席回执</a>
+                <a href="[您的导航地图链接]" target="_blank" class="btn btn-map">📍 导航地图</a>
+            </div>
+        </div>
+
+        <div class="photo-wall">
+            <h2 class="section-title">📷 幸福瞬间</h2>
+            <div class="photo-grid">
+                <img src="[图片URL 1]" alt="婚纱照1" class="grid-img">
+                <img src="[图片URL 2]" alt="婚纱照2" class="grid-img">
+                <img src="[图片URL 3]" alt="婚纱照3" class="grid-img">
+                <img src="[图片URL 4]" alt="婚纱照4" class="grid-img">
+                <img src="[图片URL 5]" alt="婚纱照5" class="grid-img">
+                <img src="[图片URL 6]" alt="婚纱照6" class="grid-img">
+                <img src="[图片URL 7]" alt="婚纱照7" class="grid-img">
+                <img src="[图片URL 8]" alt="婚纱照8" class="grid-img">
+                <img src="[图片URL 9]" alt="婚纱照9" class="grid-img">
+            </div>
+        </div>
+        
+        <div style="padding: 20px; font-size: 0.9em; color: #777;">
+            [新郎姓名] & [新娘姓名] 敬邀
+        </div>
+
+    </div>
+
+</body>
+</html>
