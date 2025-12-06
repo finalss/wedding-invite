@@ -5,209 +5,101 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>爱的邀请 | 吴濯 & 左婉馨 答谢宴</title>
 
-<!-- ========== 新增：楷体 WebFont，让手机也能显示 ========== -->
+<!-- 嵌入可用楷体（若你已有字体文件可替换 URL） -->
 <style>
-@font-face {
-    font-family: 'WebKai';
-    src: url('https://finalss.github.io/wedding-invite/font/kaiti.woff2') format('woff2');
-    font-display: swap;
+@font-face{font-family:'WebKai';src:url('https://finalss.github.io/wedding-invite/font/kaiti.woff2') format('woff2');font-display:swap}
+:root{--accent:#A52A2A;--card-bg:rgba(255,255,255,0.18);--card-bg-2:rgba(255,255,255,0.82)}
+html,body{height:100%;margin:0;padding:0}
+body{
+  font-family:'WebKai', 'KaiTi','STKaiti','Noto Serif SC',serif;
+  background-image:url('https://finalss.github.io/wedding-invite/bk.jpg');
+  /* 竖版友好：按宽度铺满，顶部对齐 */
+  background-size:100% auto;
+  background-repeat:no-repeat;
+  background-position:top center;
+  color:#333;
+  -webkit-font-smoothing:antialiased;
 }
+/* 背景柔光罩 */
+body::before{content:'';position:fixed;inset:0;background:rgba(255,250,246,0.55);backdrop-filter:blur(2px);z-index:-1}
+
+/* 页面布局 */
+.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 16px}
+.container{width:92%;max-width:580px;margin:0 auto}
+
+/* 外层半透明卡片（更窄） */
+.inner-wrap{
+  background:var(--card-bg);
+  border-radius:18px;
+  padding:12px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.12);
+  overflow:hidden;
+}
+
+/* 内层白色面板（用于内容，可调透明度） */
+.panel{
+  background:var(--card-bg-2);
+  border-radius:14px;
+  padding:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* 音乐悬浮按钮（保留原音乐并更明显） */
+#music-floating{position:fixed;right:18px;top:18px;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.7);backdrop-filter:blur(6px);box-shadow:0 6px 18px rgba(0,0,0,0.18);cursor:pointer;z-index:60}
+#music-floating.playing{transform:rotate(18deg)}
+
+/* 封面 */
+.cover-photo-container{width:100%;height:340px;overflow:hidden;border-radius:12px}
+.cover-photo{width:100%;height:100%;object-fit:cover;filter:brightness(92%)}
+
+.heart-icon{font-size:1.6rem;color:var(--accent);margin-top:18px}
+.title-main{font-size:2.4rem;margin:8px 0;color:#7a1d1d}
+.title-names{font-size:1.8rem;color:var(--accent);font-weight:700;margin-bottom:6px}
+.title-line{height:2px;width:56%;margin:12px auto;background:linear-gradient(90deg,#DDA0DD,var(--accent));border-radius:99px}
+.title-slogan{color:#555;margin-top:6px}
+
+/* details card */
+.details-card{background:rgba(255,255,255,0.72);padding:18px;border-radius:12px;margin-top:16px;border:1px solid #efe0d8}
+.section-title{font-size:1.25rem;color:#4C2B29;display:inline-block;padding-bottom:6px;border-bottom:2px solid #EEDDDD}
+.detail-item{margin:12px 0;font-size:1rem}
+.detail-title{color:var(--accent);font-weight:700}
+
+/* map iframe */
+.map-area{margin-top:12px;border-radius:10px;overflow:hidden}
+.map-area iframe{width:100%;height:240px;border:0}
+
+/* photo wall */
+.photo-wall{padding:14px}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.grid-img{width:100%;height:86px;object-fit:cover;border-radius:6px}
+
+/* footer */
+.footer{padding:12px;text-align:center;color:#777}
+
+/* 花瓣动画 */
+.petal{position:fixed;left:50%;top:-10vh;pointer-events:none;z-index:40}
+.petal svg{width:36px;height:36px;opacity:0.9}
+@keyframes fall{0%{transform:translateY(-10vh) rotate(0) ;opacity:0}10%{opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:1}}
+.petal.animate{animation:fall linear infinite}
+
+/* 轻微入场 */
+.panel{animation:fadeUp 600ms cubic-bezier(.2,.9,.3,1)}
+@keyframes fadeUp{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+
+/* responsive */
+@media(max-width:480px){.cover-photo-container{height:220px}.title-main{font-size:1.6rem}.title-names{font-size:1.2rem}}
 </style>
-
-<style>
-/* ======================
-   1. 全局与背景
-====================== */
-body {
-    font-family: "WebKai", "KaiTi", "STKaiti", serif;
-    margin: 0;
-    padding: 0;
-
-    /* 竖版大图适配手机窗口 */
-    background-image: url("https://finalss.github.io/wedding-invite/bk.jpg");
-    background-size: 100% auto;       /* 不再裁切，按宽度铺满 */
-    background-repeat: no-repeat;
-    background-position: top center;
-
-    /* 柔光覆盖 */
-    background-color: rgba(255,255,255,0.55);
-    background-blend-mode: soft-light;
-
-    text-align: center;
-    color: #333;
-}
-
-/* 防止手机出现左右白边 */
-html, body {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-/* ======================
-   2. 主容器（变窄）
-====================== */
-.container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 15px;
-}
-
-/* ========== 新增：二层背景卡片（你需要的效果） ========== */
-.inner-wrap {
-    background: rgba(255, 255, 255, 0.18);  /* 更透明 */
-    backdrop-filter: blur(10px);            /* 玻璃磨砂 */
-    -webkit-backdrop-filter: blur(10px);    /* 兼容 iPhone */
-    border-radius: 20px;
-    padding: 20px 0 10px 0;
-    box-shadow: 0 6px 25px rgba(0,0,0,0.12);
-    overflow: hidden;
-}
-
-/* ======================
-   3. 音乐按钮
-====================== */
-.music-control-area {
-    padding: 20px;
-    background: rgba(255,255,255,0.5);
-}
-
-/* 音乐按钮 */
-#music-btn {
-position: fixed;
-top: 20px;
-right: 20px;
-width: 50px;
-height: 50px;
-border-radius: 50%;
-background: rgba(255,255,255,0.7);
-display: flex;
-justify-content: center;
-align-items: center;
-backdrop-filter: blur(4px);
-cursor: pointer;
-box-shadow: 0 0 10px rgba(0,0,0,0.3);
-transition: 0.3s;
-}
-
-
-#music-btn.playing {
-transform: rotate(30deg);
-}
-
-/* ======================
-   4. 封面
-====================== */
-.cover-area {
-    padding-bottom: 35px;
-}
-
-.cover-photo-container {
-    width: 90%;
-    height: 320px;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 15px;
-}
-
-.cover-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(92%);
-}
-
-.heart-icon {
-    font-size: 2em;
-    color: #A52A2A;
-    margin-top: 25px;
-}
-
-.title-main {
-    font-size: 2.7em;
-    margin: 10px 0;
-    color: #7a1d1d;
-}
-
-.title-names {
-    font-size: 2.4em;
-    margin: 5px 0 10px 0;
-    color: #A52A2A;
-    font-weight: bold;
-}
-
-.title-line {
-    height: 2px;
-    width: 55%;
-    margin: 12px auto;
-    background: linear-gradient(to right, #DDA0DD, #A52A2A, #DDA0DD);
-}
-
-/* ======================
-   5. 详情卡片
-====================== */
-.details-card {
-    background-color: rgba(255,255,255,0.7);
-    padding: 25px 20px;
-    margin: 20px 18px;
-    border-radius: 15px;
-    border: 1px solid #ecdccd;
-    text-align: left;
-}
-
-/* ======================
-   6. 手机优化
-====================== */
-@media (max-width: 480px) {
-    .cover-photo-container {
-        height: 220px;
-    }
-    .title-main { font-size: 2.2em; }
-    .title-names { font-size: 2em; }
-}
-</style>
-
-<script>
-function toggleMusic() {
-    var music = document.getElementById("background-music");
-    var button = document.querySelector(".music-button");
-
-    if (music.paused) {
-        music.play();
-        button.innerHTML = "播放中";
-    } else {
-        music.pause();
-        button.innerHTML = "点击播放";
-    }
-}
-
-window.onload = function () {
-    var music = document.getElementById("background-music");
-    var button = document.querySelector(".music-button");
-
-    const playPromise = music.play();
-    if (playPromise !== undefined) {
-        playPromise.then(() => {
-            button.innerHTML = "播放中";
-        }).catch(() => {
-            button.innerHTML = "点击播放";
-        });
-    }
-};
-</script>
 </head>
-
 <body>
 
-<div class="container">
-    <div class="inner-wrap"><!-- 你要求的新背景层 -->
+<!-- 原始音乐悬浮（保持原音乐链接） -->
+<div id="music-floating" title="播放/暂停音乐">♪</div>
+<audio id="bg-audio" src="https://mp3-128.cdn.ncslibrary.nichion.co.jp/NTX037-011_128.mp3" loop preload="metadata"></audio>
 
-        <!-- ===== 音乐 ===== -->
-        <div class="music-control-area">
-            <audio id="background-music" src="https://mp3-128.cdn.ncslibrary.nichion.co.jp/NTX037-011_128.mp3" loop></audio>
-            <button onclick="toggleMusic()" class="music-button">
-                点击播放
-            </button>
-        </div>
+<div class="wrap">
+  <div class="container">
+    <div class="inner-wrap">
+      <div class="panel">
 
         <!-- ===== 封面 ===== -->
         <div class="cover-area">
@@ -221,31 +113,62 @@ window.onload = function () {
             <div class="title-main">答谢宴</div>
         </div>
 
-        <!-- ===== 婚礼详情 ===== -->
+        <!-- 详情卡片（保留原信息与地图） -->
         <div class="details-card">
-            <h2 class="section-title">🗓 婚礼时间地点</h2>
+          <h3 class="section-title">🗓 婚礼时间地点</h3>
 
-            <div class="detail-item">
-                <span class="detail-title">婚礼日期：</span>
-                <span>[公历日期: 2026年1月2日 (星期五)]</span>
-            </div>
+          <div class="detail-item"><span class="detail-title">婚礼日期：</span> 2026年1月2日（星期五）</div>
+          <div class="detail-item"><span class="detail-title">典礼时间：</span> 中午 12:00（11:30 恭候入场）</div>
+          <div class="detail-item"><span class="detail-title">婚宴地点：</span> 明都大酒店<br>江苏省镇江市京口区智慧大道470号</div>
 
-            <div class="detail-item">
-                <span class="detail-title">典礼时间：</span>
-                <span>[中午 12:00 (11:30 恭候入场)]</span>
-            </div>
-
-            <div class="detail-item">
-                <span class="detail-title">婚宴地点：</span>
-                <span>明都大酒店</span><br />
-                江苏省镇江市京口区智慧大道470号
-            </div>
+          <div style="text-align:center;margin-top:12px">
+            <a class="btn-map" href="https://www.amap.com/search?query=%E9%95%87%E6%B1%9F%E6%98%8E%E9%83%BD%E5%A4%A7%E9%A5%AD%E5%BA%97" target="_blank" style="display:inline-block;padding:10px 14px;border-radius:8px;background:#fff;color:var(--accent);border:1px solid var(--accent);text-decoration:none;font-weight:700">📍 导航地图</a>
+          </div>
         </div>
 
-    </div><!-- end inner-wrap -->
-</div><!-- end container -->
+      </div><!-- panel end -->
+    </div><!-- inner-wrap end -->
+  </div><!-- container end -->
+</div><!-- wrap end -->
+
+<!-- 花瓣 SVG 模板（将随机生成） -->
+<template id="petal-tpl">
+  <div class="petal" aria-hidden="true">
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="#F8BBD0" d="M32 2c6 0 14 4 16 10 2 6-4 10-6 16s4 12-4 16c-8 4-14-2-20-6C14 34 8 28 8 20 8 8 26 2 32 2z"/></svg>
+  </div>
+</template>
+
+<script>
+// 音乐控制（保留原音乐链接）
+const audio = document.getElementById('bg-audio');
+const musicBtn = document.getElementById('music-floating');
+let isPlaying=false;
+musicBtn.addEventListener('click', ()=>{
+  if(audio.paused){audio.play().catch(()=>{});musicBtn.classList.add('playing');isPlaying=true}else{audio.pause();musicBtn.classList.remove('playing');isPlaying=false}
+});
+// 尝试自动播放 on load (will often be blocked)
+window.addEventListener('load', ()=>{audio.play().then(()=>{musicBtn.classList.add('playing');isPlaying=true}).catch(()=>{isPlaying=false})});
+
+// 花瓣飘落效果（随机生成若干个）
+function spawnPetal(){
+  const tpl = document.getElementById('petal-tpl');
+  const el = tpl.content.firstElementChild.cloneNode(true);
+  const left = Math.random()*100; // percent
+  el.style.left = left + 'vw';
+  el.style.top = '-10vh';
+  const dur = 6 + Math.random()*6; // 6-12s
+  el.style.animationDuration = dur + 's';
+  el.classList.add('animate');
+  document.body.appendChild(el);
+  // remove after animation
+  setTimeout(()=>el.remove(), (dur+0.5)*1000);
+}
+// spawn periodically
+setInterval(spawnPetal, 800);
+
+// make some petals immediately
+for(let i=0;i<5;i++){setTimeout(spawnPetal,i*300)}
+</script>
 
 </body>
 </html>
-
-
