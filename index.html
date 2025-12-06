@@ -1,325 +1,308 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>爱的邀请 | 吴濯 & 左婉馨 答谢宴</title>
-    <style>
-        /* 1. 基础样式和字体 */
-        /* 引入华文行楷，如果本地没有则降级到宋体或 sans-serif */
-        body {
-            font-family: 'Microsoft YaHei', 'SimSun', sans-serif;
-            margin: 0;
-            padding: 20px 0;
-            background-color: #FDF9F3; /* 柔和的米白/浅米色背景 */
-            color: #333;
-            text-align: center;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>爱的邀请 | 吴濯 & 左婉馨 答谢宴</title>
 
-        /* 2. 容器和卡片样式 (保持居中和阴影) */
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #FFFFFF; 
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            border-radius: 15px;
-            overflow: hidden; 
-        }
+<style>
+/* ======================
+   1. 全局与背景
+====================== */
+body {
+    font-family: "KaiTi", "STKaiti", serif;
+    margin: 0;
+    padding: 0;
 
-        .card {
-            padding: 30px;
-            margin: 20px 0;
-        }
+    /* 背景图 + 柔光蒙版 */
+    background-image: url("https://finalss.github.io/wedding-invite/bk.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 
-        /* 3. 音乐播放按钮居中样式 */
-        .music-control-area {
-            text-align: center; 
-            padding-top: 20px;
-            padding-bottom: 10px;
-            background-color: #FDF9F3; 
-        }
+    /* 柔光效果，不影响可读性 */
+    background-color: rgba(255,255,255,0.68);
+    background-blend-mode: soft-light;
 
-        /* 4. 封面区域样式 */
-        .cover-area {
-            position: relative;
-            padding-bottom: 50px; 
-            background-color: #FFF;
-        }
+    text-align: center;
+    color: #333;
+}
 
-        /* 封面图片容器和图片 */
-        .cover-photo-container {
-            width: 100%;
-            height: 350px; 
-            overflow: hidden;
-        }
-        .cover-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(95%); 
-        }
+/* 防止手机浏览器出现左右白边 */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
 
-        /* 封面文字叠加 */
-        .cover-text {
-            position: static; 
-            padding: 20px 0;
-            width: 90%; 
-            margin: 0 auto;
-            color: #4C2B29;
-        }
+/* ======================
+   2. 主容器
+====================== */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgba(255,255,255,0.82); /* 半透明白，看见背景但不影响阅读 */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+}
 
-        .heart-icon {
-            font-size: 2.5em;
-            color: #A52A2A; 
-            margin-bottom: 5px;
-        }
+/* ======================
+   3. 音乐按钮
+====================== */
+.music-control-area {
+    padding: 20px;
+    background: rgba(255,255,255,0.5);
+}
 
-        /* **重要改动：标题字体改为华文行楷** */
-        .title-main {
-            font-family: 'STXingkai', 'SimSun', serif; /* 华文行楷 */
-            font-size: 3.5em; /* 增大以适应行楷笔画 */
-            line-height: 1;
-            margin: 5px 0 10px 0;
-            font-weight: normal;
-        }
-        /* **重要改动：姓名字体改为华文行楷** */
-        .title-names {
-            font-family: 'STXingkai', 'SimSun', serif; /* 华文行楷 */
-            font-size: 3em; /* 增大以适应行楷笔画 */
-            margin: 10px 0 15px 0;
-            color: #A52A2A; 
-        }
-        
-        .title-line {
-            height: 2px;
-            width: 50%;
-            background: linear-gradient(to right, #DDA0DD, #A52A2A, #DDA0DD);
-            margin: 10px auto;
-        }
-        .title-slogan {
-            font-size: 0.9em;
-            color: #666;
-            margin-top: 15px;
-        }
+.music-button {
+    padding: 10px 18px;
+    font-size: 1em;
+    border-radius: 8px;
+    background-color: #A52A2A;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
 
+/* ======================
+   4. 封面区域
+====================== */
+.cover-area {
+    padding-bottom: 35px;
+}
 
-        /* 5. 详情卡片样式 (文本居左，卡片居中) */
-        .details-card {
-            background-color: #FDF9F3; 
-            border-radius: 10px;
-            padding: 25px;
-            margin: 20px;
-            text-align: left; /* 内容保持左对齐 */
-            border: 1px solid #F0E6D8;
-        }
+.cover-photo-container {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
 
-        .detail-item {
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
+.cover-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(92%);
+}
 
-        .detail-title {
-            color: #A52A2A; 
-            font-weight: bold;
-            font-size: 1.1em;
-            display: block;
-            margin-bottom: 5px;
-        }
+.heart-icon {
+    font-size: 2.5em;
+    color: #A52A2A;
+    margin-top: 25px;
+}
 
-        .highlight {
-            color: #A52A2A;
-            font-weight: bold;
-        }
+.title-main {
+    font-size: 3.2em;
+    margin: 10px 0;
+    font-weight: normal;
+    color: #7a1d1d;
+}
 
-        /* 6. 按钮和回执样式 */
-        .button-group {
-            margin-top: 25px;
-            text-align: center; /* 按钮居中 */
-        }
+.title-names {
+    font-size: 2.7em;
+    margin: 5px 0 10px 0;
+    color: #A52A2A;
+    font-weight: bold;
+}
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
+.title-line {
+    height: 2px;
+    width: 50%;
+    margin: 10px auto;
+    background: linear-gradient(to right, #DDA0DD, #A52A2A, #DDA0DD);
+}
 
-        .btn-rsvp {
-            background-color: #A52A2A;
-            color: white;
-            border: 1px solid #A52A2A;
-        }
-        .btn-map {
-            background-color: #FFFFFF;
-            color: #A52A2A;
-            border: 1px solid #A52A2A;
-        }
-        .btn-rsvp:hover { background-color: #8B0000; }
-        .btn-map:hover { background-color: #FDF9F3; }
+.title-slogan {
+    font-size: 1.05em;
+    color: #444;
+}
 
+/* ======================
+   5. 详情卡片
+====================== */
+.details-card {
+    background-color: rgba(255,255,255,0.7);
+    padding: 25px;
+    margin: 20px 15px;
+    border-radius: 15px;
+    border: 1px solid #ecdccd;
+    text-align: left;
+}
 
-        /* 7. 照片墙样式 */
-        .photo-wall {
-            padding: 20px;
-            text-align: center;
-        }
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 10px; 
-            margin-top: 15px;
-        }
-        .grid-img {
-            width: 100%;
-            height: 100px; 
-            object-fit: cover;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-        .section-title {
-            font-size: 1.8em;
-            color: #4C2B29;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #F0E6D8;
-            padding-bottom: 5px;
-            display: inline-block;
-        }
+.section-title {
+    font-size: 1.7em;
+    color: #4C2B29;
+    border-bottom: 2px solid #EEDDDD;
+    display: inline-block;
+    padding-bottom: 5px;
+}
 
-        .music-button {
-            padding: 8px 15px; 
-            background-color: #A52A2A; 
-            color: white; 
-            border: none; 
-            border-radius: 5px; 
-            cursor: pointer;
-            font-size: 0.9em;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            font-weight: bold;
-        }
-    </style>
-    <script>
-        function toggleMusic() {
-            var music = document.getElementById('background-music');
-            var button = document.querySelector('.music-button');
-            if (music.paused) {
-                music.play().then(() => {
-                    button.innerHTML = ' 播放中 ';
-                }).catch(error => {
-                    button.innerHTML = ' 无法播放 ';
-                    console.error("Autoplay failed:", error);
-                });
-            } else {
-                music.pause();
-                button.innerHTML = ' 暂停 ';
-            }
-        }
-        
-        window.onload = function() {
-            var music = document.getElementById('background-music');
-            var button = document.querySelector('.music-button');
-            
-            // 尝试播放，并在失败时更新按钮状态
-            var playPromise = music.play();
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    button.innerHTML = ' 播放中 ';
-                }).catch(error => {
-                    button.innerHTML = ' 点击播放 ';
-                    // 音乐可能因为浏览器限制无法自动播放，等待用户点击
-                });
-            } else {
-                 button.innerHTML = ' 点击播放 ';
-            }
-        }
-    </script>
+/* 文本项 */
+.detail-item {
+    margin: 15px 0;
+    font-size: 1.1em;
+}
+
+.detail-title {
+    font-weight: bold;
+    color: #A52A2A;
+}
+
+/* ======================
+   6. 按钮
+====================== */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    border: 1px solid #A52A2A;
+}
+
+.btn-map {
+    color: #A52A2A;
+    background-color: white;
+}
+.btn-map:hover {
+    background-color: #f8f1ee;
+}
+
+/* ======================
+   7. 照片墙
+====================== */
+.photo-wall {
+    padding: 20px;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.grid-img {
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* 手机优化 */
+@media (max-width: 480px) {
+    .cover-photo-container {
+        height: 250px;
+    }
+    .title-main { font-size: 2.4em; }
+    .title-names { font-size: 2.2em; }
+    .grid-img { height: 85px; }
+}
+</style>
+
+<script>
+function toggleMusic() {
+    var music = document.getElementById("background-music");
+    var button = document.querySelector(".music-button");
+
+    if (music.paused) {
+        music.play();
+        button.innerHTML = "播放中";
+    } else {
+        music.pause();
+        button.innerHTML = "点击播放";
+    }
+}
+
+window.onload = function () {
+    var music = document.getElementById("background-music");
+    var button = document.querySelector(".music-button");
+
+    const playPromise = music.play();
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            button.innerHTML = "播放中";
+        }).catch(() => {
+            button.innerHTML = "点击播放";
+        });
+    }
+};
+</script>
 </head>
+
 <body>
 
-    <div class="container">
-        
-        <div class="music-control-area">
-            <audio id="background-music" src="https://mp3-128.cdn.ncslibrary.nichion.co.jp/NTX037-011_128.mp3" loop></audio>
-            <button onclick="toggleMusic()" class="music-button">
-                 点击播放 
-            </button>
-        </div>
+<div class="container">
 
-        <div class="cover-area">
-            <div class="cover-photo-container">
-                <img src="https://finalss.github.io/wedding-invite/027.jpg" alt="新人封面合影" class="cover-photo">
-            </div>
-            
-            <div class="cover-text">
-                <p class="heart-icon">爱的邀请</p>
-                <h1 class="title-main">谨邀</h1>
-                <p class="title-names">吴濯 & 左婉馨</p>
-                <div class="title-line"></div>
-                <p class="title-slogan">余生漫漫，幸得有你。诚邀您见证我们的幸福时刻。</p>
-            </div>
-        </div>
-
-        <div class="details-card">
-            <h2 class="section-title" style="margin: 0 auto 20px auto; text-align: center;">🗓 婚礼时间地点</h2>
-
-            <div class="detail-item">
-                <span class="detail-title">婚礼日期</span>
-                <span class="highlight">[公历日期:2026年 1月 2日 (星期五)]</span>
-            </div>
-
-            <div class="detail-item">
-                <span class="detail-title">典礼时间</span>
-                <span class="highlight">[具体时间：中午 12:00 (11:30 恭候入场)]</span>
-            </div>
-            
-            <div class="detail-item">
-                <span class="detail-title">婚宴地点</span>
-                <span class="highlight">明都大酒店</span>
-                <br>
-                 江苏省镇江市京口区智慧大道470号
-            </div>
-
-            <div class="button-group">
-                <a href="https://www.amap.com/search?query=%E9%95%87%E6%B1%9F%E6%98%8E%E9%83%BD%E5%A4%A7%E9%A5%AD%E5%BA%97&city=110000&geoobj=115.14885%7C39.26088%7C118.379683%7C40.59423&zoom=9.29" target="_blank" class="btn btn-map">📍 导航地图</a>
-            </div>
-            <div class="map-area" style="padding: 20px 0; text-align: center;">
-                <h2 class="section-title">🗺 导航指引</h2>
-                  <iframe 
-                    src="https://map.baidu.com/poi/%E9%95%87%E6%B1%9F%E6%98%8E%E9%83%BD%E5%A4%A7%E9%A5%AD%E5%BA%97/@13305097.32,3762453.881180837,15.31z?uid=74e63825f5cc9d31e01103a5&ugc_type=3&ugc_ver=1&device_ratio=2&compat=1&en_uid=74e63825f5cc9d31e01103a5&pcevaname=pc4.1&querytype=detailConInfo&da_src=shareurl" 
-                    width="100%" 
-                    height="300" 
-                    style="border:0; border-radius: 10px;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                  </iframe>
-             </div>
-        </div>
-        
-
-        <div class="photo-wall">
-            <h2 class="section-title">幸福瞬间</h2>
-            <div class="photo-grid">
-                <img src="[图片URL 1]" alt="婚纱照1" class="grid-img">
-                <img src="[图片URL 2]" alt="婚纱照2" class="grid-img">
-                <img src="[图片URL 3]" alt="婚纱照3" class="grid-img">
-                <img src="[图片URL 4]" alt="婚纱照4" class="grid-img">
-                <img src="[图片URL 5]" alt="婚纱照5" class="grid-img">
-                <img src="[图片URL 6]" alt="婚纱照6" class="grid-img">
-                <img src="[图片URL 7]" alt="婚纱照7" class="grid-img">
-                <img src="[图片URL 8]" alt="婚纱照8" class="grid-img">
-                <img src="[图片URL 9]" alt="婚纱照9" class="grid-img">
-            </div>
-        </div>
-        
-        <div style="padding: 20px; font-size: 0.9em; color: #777;">
-            吴濯 & 左婉馨 敬邀
-        </div>
-
+    <!-- ===== 音乐 ===== -->
+    <div class="music-control-area">
+        <audio id="background-music" src="https://mp3-128.cdn.ncslibrary.nichion.co.jp/NTX037-011_128.mp3" loop></audio>
+        <button onclick="toggleMusic()" class="music-button">
+            点击播放
+        </button>
     </div>
 
+    <!-- ===== 封面 ===== -->
+    <div class="cover-area">
+        <div class="cover-photo-container">
+            <img src="https://finalss.github.io/wedding-invite/027.jpg" class="cover-photo" />
+        </div>
+
+        <p class="heart-icon">爱的邀请</p>
+        <div class="title-main">谨邀</div>
+        <div class="title-names">吴濯 & 左婉馨</div>
+        <div class="title-line"></div>
+        <p class="title-slogan">余生漫漫，幸得有你。诚邀您见证我们的幸福时刻。</p>
+    </div>
+
+    <!-- ===== 婚礼详情 ===== -->
+    <div class="details-card">
+        <h2 class="section-title">🗓 婚礼时间地点</h2>
+
+        <div class="detail-item">
+            <span class="detail-title">婚礼日期：</span>
+            <span>[公历日期: 2026年1月2日 (星期五)]</span>
+        </div>
+
+        <div class="detail-item">
+            <span class="detail-title">典礼时间：</span>
+            <span>[中午 12:00 (11:30 恭候入场)]</span>
+        </div>
+
+        <div class="detail-item">
+            <span class="detail-title">婚宴地点：</span>
+            <span>明都大酒店</span><br />
+            江苏省镇江市京口区智慧大道470号
+        </div>
+
+        <div style="text-align:center;">
+            <a href="https://www.amap.com/search?query=%E9%95%87%E6%B1%9F%E6%98%8E%E9%83%BD%E5%A4%A7%E9%A5%AD%E5%BA%97" 
+               target="_blank" class="btn btn-map">📍 导航地图</a>
+        </div>
+    </div>
+
+    <!-- ===== 照片墙 ===== -->
+    <div class="photo-wall">
+        <h2 class="section-title">幸福瞬间</h2>
+
+        <div class="photo-grid">
+            <img src="[图片URL1]" class="grid-img">
+            <img src="[图片URL2]" class="grid-img">
+            <img src="[图片URL3]" class="grid-img">
+            <img src="[图片URL4]" class="grid-img">
+            <img src="[图片URL5]" class="grid-img">
+            <img src="[图片URL6]" class="grid-img">
+            <img src="[图片URL7]" class="grid-img">
+            <img src="[图片URL8]" class="grid-img">
+            <img src="[图片URL9]" class="grid-img">
+        </div>
+    </div>
+
+    <div style="padding:20px; color:#777;">
+        吴濯 & 左婉馨 敬邀
+    </div>
+
+</div>
 </body>
 </html>
-
