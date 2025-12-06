@@ -139,39 +139,75 @@ body::before{content:'';position:fixed;inset:0;background:rgba(255,250,246,0.55)
 </template>
 
 <script>
-// 音乐控制（保留原音乐链接）
+// 自动播放 + 主/备用音乐切换
 const audio = document.getElementById('bg-audio');
 const musicBtn = document.getElementById('music-floating');
-let isPlaying=false;
-musicBtn.addEventListener('click', ()=>{
-  if(audio.paused){audio.play().catch(()=>{});musicBtn.classList.add('playing');isPlaying=true}else{audio.pause();musicBtn.classList.remove('playing');isPlaying=false}
+let isPlaying = false;
+
+
+const primarySrc = "https://mp3-128.cdn.ncslibrary.nichion.co.jp/NTX037-011_128.mp3";
+const backupSrc = "https://finalss.github.io/wedding-invite/music-backup.mp3";
+
+
+audio.src = primarySrc;
+
+
+function tryPlay(src){
+audio.src = src;
+const p = audio.play();
+if(p !== undefined){
+p.then(()=>{
+musicBtn.classList.add('playing');
+isPlaying = true;
+}).catch(()=>{
+if(audio.src !== backupSrc){ tryPlay(backupSrc); }
 });
-// 尝试自动播放 on load (will often be blocked)
-window.addEventListener('load', ()=>{audio.play().then(()=>{musicBtn.classList.add('playing');isPlaying=true}).catch(()=>{isPlaying=false})});
-
-// 花瓣飘落效果（随机生成若干个）
-function spawnPetal(){
-  const tpl = document.getElementById('petal-tpl');
-  const el = tpl.content.firstElementChild.cloneNode(true);
-  const left = Math.random()*100; // percent
-  el.style.left = left + 'vw';
-  el.style.top = '-10vh';
-  const dur = 6 + Math.random()*6; // 6-12s
-  el.style.animationDuration = dur + 's';
-  el.classList.add('animate');
-  document.body.appendChild(el);
-  // remove after animation
-  setTimeout(()=>el.remove(), (dur+0.5)*1000);
 }
-// spawn periodically
-setInterval(spawnPetal, 800);
+}
 
-// make some petals immediately
-for(let i=0;i<5;i++){setTimeout(spawnPetal,i*300)}
+
+audio.onerror = function(){
+if(audio.src !== backupSrc){ tryPlay(backupSrc); }
+};
+
+
+window.addEventListener('load', ()=>{
+tryPlay(primarySrc);
+});
+
+
+// 按钮控制
+musicBtn.addEventListener('click', ()=>{
+if(audio.paused){
+audio.play().catch(()=>{});
+musicBtn.classList.add('playing');
+isPlaying = true;
+} else {
+audio.pause();
+musicBtn.classList.remove('playing');
+isPlaying = false;
+}
+});
+
+
+// 花瓣飘落效果（保持不动）
+function spawnPetal(){
+const tpl = document.getElementById('petal-tpl');
+const petal = tpl.content.firstElementChild.cloneNode(true);
+const size = Math.random()*0.6 + 0.4;
+petal.style.left = Math.random()*100 + 'vw';
+petal.style.animationDuration = (Math.random()*6+6)+'s';
+petal.style.transform = `scale(${size})`;
+petal.classList.add('animate');
+document.body.appendChild(petal);
+setTimeout(()=>petal.remove(), 15000);
+}
+setInterval(spawnPetal, 1200);
 </script>
 
 </body>
 </html>
+
 
 
 
