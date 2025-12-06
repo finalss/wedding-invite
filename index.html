@@ -12,13 +12,11 @@
 html,body{height:100%;margin:0;padding:0}
 body{
   font-family:'WebKai', 'KaiTi','STKaiti','Noto Serif SC',serif;
-  background-image:url('https://finalss.github.io/wedding-invite/bk.jpg');
-  /* 竖版友好：按宽度铺满，顶部对齐 */
-  background-size:100% auto;
-  background-repeat:no-repeat;
-  background-position:top center;
-  color:#333;
-  -webkit-font-smoothing:antialiased;
+background-image: url('https://finalss.github.io/wedding-invite/bk.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center top;
+background-attachment: scroll; 
 }
 /* 背景柔光罩 */
 body::before{content:'';position:fixed;inset:0;background:rgba(255,250,246,0.55);backdrop-filter:blur(2px);z-index:-1}
@@ -172,5 +170,6 @@ for(let i=0;i<5;i++){setTimeout(spawnPetal,i*300)}
 
 </body>
 </html>
+
 
 
