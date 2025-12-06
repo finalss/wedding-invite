@@ -8,7 +8,7 @@
 <!-- 嵌入可用楷体（若你已有字体文件可替换 URL） -->
 <style>
 @font-face{font-family:'WebKai';src:url('https://finalss.github.io/wedding-invite/font/kaiti.woff2') format('woff2');font-display:swap}
-:root{--accent:#A52A2A;--card-bg:rgba(255,255,255,0.18);--card-bg-2:rgba(255,255,255,0.82)}
+:root{--accent:#A52A2A;--card-bg:rgba(255,255,255,0.08);--card-bg-2:rgba(255,255,255,0.12)}
 html,body{height:100%;margin:0;padding:0}
 body {
   position: relative;
@@ -54,15 +54,17 @@ body::after {
   border-radius:18px;
   padding:12px;
   box-shadow:0 8px 30px rgba(0,0,0,0.12);
+  backdrop-filter: blur(6px); /* ⭐模糊背景，让文字更可读 */
   overflow:hidden;
 }
 
 /* 内层白色面板（用于内容，可调透明度） */
 .panel{
-  background:var(--card-bg-2);
+  background:var(--card-bg);
   border-radius:14px;
   padding:16px;
   box-shadow:0 6px 18px rgba(0,0,0,0.06);
+  backdrop-filter: blur(3px); /* ⭐模糊背景，让文字更可读 */
 }
 
 /* 音乐悬浮按钮（保留原音乐并更明显） */
@@ -229,4 +231,3 @@ setInterval(spawnPetal, 1200);
 
 </body>
 </html>
-
