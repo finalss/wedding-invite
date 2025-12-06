@@ -1,149 +1,240 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>吴濯 & 左婉馨 结婚典礼</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>诚邀您前来参加 吴濯 & 左婉馨 答谢宴</title>
 
-    <!-- 加载手机可显示的“开源楷体” -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
+<!-- 嵌入可用楷体（若你已有字体文件可替换 URL） -->
+<style>
+@font-face{font-family:'WebKai';src:url('https://finalss.github.io/wedding-invite/font/kaiti.woff2') format('woff2');font-display:swap}
+:root{--accent:#A52A2A;--card-bg:rgba(255,255,255,0.08);--card-bg-2:rgba(255,255,255,0.12)}
+html,body{height:100%;margin:0;padding:0}
+body {
+  position: relative;
+  min-height: 100%;
+  font-family:'WebKai','KaiTi','STKaiti','Noto Serif SC',serif;
+  color:#333;
+  -webkit-font-smoothing: antialiased;
+}
 
-    <style>
-        /* 背景竖版显示 */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Noto Serif SC','KaiTi','楷体','SimSun',serif;
-            background: url("https://finalss.github.io/wedding-invite/bk.jpg") center top/cover no-repeat fixed;
-            position: relative;
-        }
+/* 无限高度背景，彻底解决 iPhone 滚动到底部出现白块的问题 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+  
+  background-image: url('https://finalss.github.io/wedding-invite/bk.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
 
-        /* 柔光背景层 */
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background: rgba(255, 248, 250, 0.65);
-            backdrop-filter: blur(2px);
-            z-index: -1;
-        }
+/* 柔光蒙版保持不变（放在 ::after 层之上） */
+body::after {
+  content:"";
+  position: fixed;
+  inset:0;
+  background: rgba(255,250,246,0.55);
+  backdrop-filter: blur(2px);
+  z-index:-1;
+}
 
-        /* 外层卡片 */
-        .container {
-            width: 90%;
-            max-width: 580px;   /* 👈 这里变窄了 */
-            margin: 40px auto;
-            background: rgba(255, 255, 255, 0.75);
-            border-radius: 20px;
-            padding: 18px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
+/* 页面布局 */
+.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 16px}
+.container{width:92%;max-width:580px;margin:0 auto}
 
-        /* 内层卡片（新增） */
-        .inner-box {
-            background: white;
-            border-radius: 18px;
-            padding: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
+/* 外层半透明卡片（更窄） */
+.inner-wrap{
+  background:var(--card-bg);
+  border-radius:18px;
+  padding:12px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.12);
+  backdrop-filter: blur(6px); /* ⭐模糊背景，让文字更可读 */
+  overflow:hidden;
+}
 
-        /* 顶部区域 */
-        .header-bg {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 10px;
-        }
+/* 内层白色面板（用于内容，可调透明度） */
+.panel{
+  background:var(--card-bg);
+  border-radius:14px;
+  padding:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+  backdrop-filter: blur(3px); /* ⭐模糊背景，让文字更可读 */
+}
 
-        /* 播放按钮 */
-        .music-btn {
-            background:#C2463A;
-            border:none;
-            padding:8px 16px;
-            color:white;
-            font-size:0.9em;
-            border-radius:6px;
-            margin-bottom:10px;
-            cursor:pointer;
-        }
+/* 音乐悬浮按钮（保留原音乐并更明显） */
+#music-floating{position:fixed;right:18px;top:18px;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.7);backdrop-filter:blur(6px);box-shadow:0 6px 18px rgba(0,0,0,0.18);cursor:pointer;z-index:60}
+#music-floating.playing{transform:rotate(18deg)}
 
-        /* 封面图 */
-        .cover-photo {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.18);
-        }
+/* 封面 */
+.cover-photo-container{width:100%;height:340px;overflow:hidden;border-radius:12px}
+.cover-photo{width:100%;height:100%;object-fit:cover;filter:brightness(92%)}
 
-        .title {
-            font-size: 1.8em;
-            color:#B0302D;
-            font-weight:600;
-        }
+.heart-icon{font-size:1.6rem;color:var(--accent);margin-top:18px}
+.title-main{font-size:2.4rem;margin:8px 0;color:#7a1d1d}
+.title-names{font-size:1.8rem;color:var(--accent);font-weight:700;margin-bottom:6px}
+.title-line{height:2px;width:56%;margin:12px auto;background:linear-gradient(90deg,#DDA0DD,var(--accent));border-radius:99px}
+.title-slogan{color:#555;margin-top:6px}
 
-        .names {
-            font-size: 2.2em;
-            font-weight:600;
-            color:#8B1A1A;
-            margin: 15px 0;
-        }
+/* details card */
+.details-card{background:rgba(255,255,255,0.72);padding:18px;border-radius:12px;margin-top:16px;border:1px solid #efe0d8}
+.section-title{font-size:1.25rem;color:#4C2B29;display:inline-block;padding-bottom:6px;border-bottom:2px solid #EEDDDD}
+.detail-item{margin:12px 0;font-size:1rem}
+.detail-title{color:var(--accent);font-weight:700}
 
-        .detail {
-            font-size: 1.05em;
-            line-height: 1.8;
-            margin: 10px 0;
-            color:#333;
-        }
+/* map iframe */
+.map-area{margin-top:12px;border-radius:10px;overflow:hidden}
+.map-area iframe{width:100%;height:240px;border:0}
 
-        .card-block {
-            border: 1px solid #E0C9C2;
-            padding: 18px;
-            border-radius: 12px;
-            margin-top: 20px;
-            background: #FFF7F5;
-        }
+/* photo wall */
+.photo-wall{padding:14px}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.grid-img{width:100%;height:86px;object-fit:cover;border-radius:6px}
 
-    </style>
+/* footer */
+.footer{padding:12px;text-align:center;color:#777}
 
-    <script>
-        function toggleMusic() {
-            const m = document.getElementById('bgm');
-            const b = document.getElementById('btnPlay');
-            if (m.paused) {
-                m.play();
-                b.innerHTML = "🎵 播放中";
-            } else {
-                m.pause();
-                b.innerHTML = "▶️ 点击播放";
-            }
-        }
-    </script>
+/* 花瓣动画 */
+.petal{position:fixed;left:50%;top:-10vh;pointer-events:none;z-index:40}
+.petal svg{width:36px;height:36px;opacity:0.9}
+@keyframes fall{0%{transform:translateY(-10vh) rotate(0) ;opacity:0}10%{opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:1}}
+.petal.animate{animation:fall linear infinite}
+
+/* 轻微入场 */
+.panel{animation:fadeUp 600ms cubic-bezier(.2,.9,.3,1)}
+@keyframes fadeUp{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+
+/* responsive */
+@media(max-width:480px){.cover-photo-container{height:220px}.title-main{font-size:1.6rem}.title-names{font-size:1.2rem}}
+</style>
 </head>
-
 <body>
 
-<div class="container">
-<div class="inner-box">
+<!-- 原始音乐悬浮（保持原音乐链接） -->
+<div id="music-floating" title="播放/暂停音乐">♪</div>
+<audio id="bg-audio" src="https://finalss.github.io/wedding-invite/music.mp3" loop preload="metadata"></audio>
 
-    <button class="music-btn" id="btnPlay" onclick="toggleMusic()">▶️ 点击播放</button>
-    <audio id="bgm" src="https://mp3-128.cdn.ncslibrary.nichion.co.jp/NTX037-011_128.mp3" loop></audio>
+<div class="wrap">
+  <div class="container">
+    <div class="inner-wrap">
+      <div class="panel">
+        <!-- 封面图（保留你原来的封面） -->
+          <div class="cover-photo-container">
+               <img src="https://finalss.github.io/wedding-invite/027.jpg" alt="新人封面合影" class="cover-photo" />
+          </div>
 
-    <div class="header-bg">
-        <img src="https://finalss.github.io/wedding-invite/sample-cover.jpg" class="cover-photo">
-    </div>
 
-    <p class="title">诚邀您前来参加</p>
-    <p class="names">吴濯 & 左婉馨</p>
-    <p class="title">答谢宴</p>
+          <div style="text-align:center;margin-top:10px">
+            <p class="heart-icon">诚邀您前来参加</p>
+            <div class="title-main">吴濯 & 左婉馨</div>
+            <div class="title-line"></div>
+            <div class="title-names">答谢宴</div>
+        </div>
 
-    <div class="card-block">
-        <p class="detail"><b>💒 婚礼日期：</b> 2026年 1月 2日（星期五）</p>
-        <p class="detail"><b>⌚ 宴席时间：</b> 12:00（11:30 恭候入场）</p>
-        <p class="detail"><b>📍 婚宴地点：</b> XXXX酒店 · XX宴会厅</p>
-        <p class="detail">地址：XXXXXXXXXXXX</p>
-    </div>
+        <!-- 详情卡片（保留原信息与地图） -->
+        <div class="details-card">
+          <h3 class="section-title">喜宴时间地点</h3>
 
-</div>
-</div>
+          <div class="detail-item"><span class="detail-title">喜宴日期：</span> 2026年1月2日（星期五）</div>
+          <div class="detail-item"><span class="detail-title">喜宴时间：</span> 11:58</div>
+          <div class="detail-item"><span class="detail-title">喜宴地址：</span> 镇江明都大酒店贵宾楼一楼阳光厅</div>
+
+          <div style="text-align:center;margin-top:12px">
+            <a class="btn-map" href="https://www.amap.com/search?query=%E9%95%87%E6%B1%9F%E6%98%8E%E9%83%BD%E5%A4%A7%E9%A5%AD%E5%BA%97" 
+              target="_blank" style="display:inline-block;padding:10px 14px;border-radius:8px;background:#fff;color:var(--accent);border:1px solid var(--accent);text-decoration:none;font-weight:700">导航地图</a>
+          </div>
+        </div>
+
+      </div><!-- panel end -->
+    </div><!-- inner-wrap end -->
+  </div><!-- container end -->
+</div><!-- wrap end -->
+
+<!-- 花瓣 SVG 模板（将随机生成） -->
+<template id="petal-tpl">
+  <div class="petal" aria-hidden="true">
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="#F8BBD0" d="M32 2c6 0 14 4 16 10 2 6-4 10-6 16s4 12-4 16c-8 4-14-2-20-6C14 34 8 28 8 20 8 8 26 2 32 2z"/></svg>
+  </div>
+</template>
+
+<script>
+// 自动播放 + 主/备用音乐切换
+const audio = document.getElementById('bg-audio');
+const musicBtn = document.getElementById('music-floating');
+let isPlaying = false;
+
+
+const primarySrc = "https://finalss.github.io/wedding-invite/music.mp3";
+const backupSrc = "https://finalss.github.io/wedding-invite/music.mp3";
+
+
+audio.src = primarySrc;
+
+
+function tryPlay(src){
+audio.src = src;
+const p = audio.play();
+if(p !== undefined){
+p.then(()=>{
+musicBtn.classList.add('playing');
+isPlaying = true;
+}).catch(()=>{
+if(audio.src !== backupSrc){ tryPlay(backupSrc); }
+});
+}
+}
+
+
+audio.onerror = function(){
+if(audio.src !== backupSrc){ tryPlay(backupSrc); }
+};
+
+
+window.addEventListener('load', ()=>{
+tryPlay(primarySrc);
+});
+
+
+// 按钮控制
+musicBtn.addEventListener('click', ()=>{
+if(audio.paused){
+audio.play().catch(()=>{});
+musicBtn.classList.add('playing');
+isPlaying = true;
+} else {
+audio.pause();
+musicBtn.classList.remove('playing');
+isPlaying = false;
+}
+});
+
+// 移动端首次触摸触发播放（强制合法自动播放）
+document.addEventListener('touchstart', function autoPlay() {
+    if (audio.paused) {
+        audio.play().catch(()=>{});
+    }
+    document.removeEventListener('touchstart', autoPlay);
+});
+
+// 花瓣飘落效果（保持不动）
+function spawnPetal(){
+const tpl = document.getElementById('petal-tpl');
+const petal = tpl.content.firstElementChild.cloneNode(true);
+const size = Math.random()*0.6 + 0.4;
+petal.style.left = Math.random()*100 + 'vw';
+petal.style.animationDuration = (Math.random()*6+6)+'s';
+petal.style.transform = `scale(${size})`;
+petal.classList.add('animate');
+document.body.appendChild(petal);
+setTimeout(()=>petal.remove(), 15000);
+}
+setInterval(spawnPetal, 1200);
+</script>
 
 </body>
 </html>
