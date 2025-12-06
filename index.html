@@ -206,14 +206,14 @@
             var button = document.querySelector('.music-button');
             if (music.paused) {
                 music.play().then(() => {
-                    button.innerHTML = '🎵 播放中 💖';
+                    button.innerHTML = ' 播放中 ';
                 }).catch(error => {
-                    button.innerHTML = '⚠️ 无法播放 💖';
+                    button.innerHTML = ' 无法播放 ';
                     console.error("Autoplay failed:", error);
                 });
             } else {
                 music.pause();
-                button.innerHTML = '🔇 暂停 💖';
+                button.innerHTML = ' 暂停 ';
             }
         }
         
@@ -225,13 +225,13 @@
             var playPromise = music.play();
             if (playPromise !== undefined) {
                 playPromise.then(() => {
-                    button.innerHTML = '🎵 播放中 💖';
+                    button.innerHTML = ' 播放中 ';
                 }).catch(error => {
-                    button.innerHTML = '▶️ 点击播放 💖';
+                    button.innerHTML = ' 点击播放 ';
                     // 音乐可能因为浏览器限制无法自动播放，等待用户点击
                 });
             } else {
-                 button.innerHTML = '▶️ 点击播放 💖';
+                 button.innerHTML = ' 点击播放 ';
             }
         }
     </script>
@@ -243,13 +243,13 @@
         <div class="music-control-area">
             <audio id="background-music" src="https://mp3-128.cdn.ncslibrary.nichion.co.jp/NTX037-011_128.mp3" loop></audio>
             <button onclick="toggleMusic()" class="music-button">
-                ▶️ 点击播放 💖
+                 点击播放 
             </button>
         </div>
 
         <div class="cover-area">
             <div class="cover-photo-container">
-                <img src="https://finalss.github.io/wedding-invite/027.jpg" alt="新人封面合影" class="cover-photo">
+                <img src="https://finalss.github.io/wedding-invite/finalss/wedding-invite/027.jpg" alt="新人封面合影" class="cover-photo">
             </div>
             
             <div class="cover-text">
@@ -266,17 +266,17 @@
 
             <div class="detail-item">
                 <span class="detail-title">婚礼日期</span>
-                <span class="highlight">[公历日期，例如：2026年 5月 20日 (星期六)]</span>
+                <span class="highlight">[公历日期:2026年 1月 2日 (星期五)]</span>
             </div>
 
             <div class="detail-item">
                 <span class="detail-title">典礼时间</span>
-                <span class="highlight">[具体时间，例如：下午 18:00 (17:30 恭候入场)]</span>
+                <span class="highlight">[具体时间：中午 18:00 (17:30 恭候入场)]</span>
             </div>
             
             <div class="detail-item">
                 <span class="detail-title">婚宴地点</span>
-                <span class="highlight">[酒店/宴会厅全称]</span>
+                <span class="highlight">明都大酒店</span>
                 <br>
                 [详细地址]
             </div>
@@ -288,10 +288,22 @@
             </div>
 
             <div class="button-group">
-                <a href="[您的宾客回执/RSVP表单链接]" target="_blank" class="btn btn-rsvp">💖 确认出席回执</a>
-                <a href="[您的导航地图链接]" target="_blank" class="btn btn-map">📍 导航地图</a>
+                <a href="https://www.amap.com/search?query=%E9%95%87%E6%B1%9F%E6%98%8E%E9%83%BD%E5%A4%A7%E9%A5%AD%E5%BA%97&city=110000&geoobj=115.14885%7C39.26088%7C118.379683%7C40.59423&zoom=9.29" target="_blank" class="btn btn-map">📍 导航地图</a>
             </div>
+            <div class="map-area" style="padding: 20px 0; text-align: center;">
+                <h2 class="section-title">🗺 导航指引</h2>
+                  <iframe 
+                    src="https://www.amap.com/search?query=%E9%95%87%E6%B1%9F%E6%98%8E%E9%83%BD%E5%A4%A7%E9%A5%AD%E5%BA%97&city=110000&geoobj=115.14885%7C39.26088%7C118.379683%7C40.59423&zoom=9.29" 
+                    width="100%" 
+                    height="300" 
+                    style="border:0; border-radius: 10px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
+             </div>
         </div>
+        
 
         <div class="photo-wall">
             <h2 class="section-title">📷 幸福瞬间</h2>
@@ -316,4 +328,3 @@
 
 </body>
 </html>
-
