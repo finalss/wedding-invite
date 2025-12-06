@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>吴濯 & 左婉馨 结婚典礼</title>
+
+    <style>
+        /* 页面背景：你的背景图 + 柔光蒙版 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'KaiTi','楷体','STKaiti','SimSun',serif;
+            background: url("https://finalss.github.io/wedding-invite/bk.jpg") center/cover no-repeat fixed;
+            position: relative;
+            color: #4C2B29;
+            text-align: center;
+        }
+
+        /* 柔光蒙版 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 245, 240, 0.65);
+            backdrop-filter: blur(2px);
+            z-index: -1;
+        }
+
+        /* 主卡片 */
+        .container {
+            width: 90%;
+            max-width: 650px;
+            margin: 25px auto;
+            background: rgba(255,255,255,0.85);
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            overflow: hidden;
+            padding-bottom: 30px;
+        }
+
+        /* 顶部金色背景 */
+        .header-bg {
+            background: linear-gradient(135deg,#8B4513,#A0522D);
+            color: #FFD700;
+            padding: 22px 0 32px 0;
+        }
+
+        .header-bg p {
+            margin: 0;
+            letter-spacing: 3px;
+            font-size: 1.1em;
+        }
+
+        .title-main {
+            font-family:'KaiTi','楷体',serif;
+            font-size: 3em;
+            margin: 10px 0;
+            color: #FFD700;
+        }
+
+        /* 封面照 */
+        .photo-container {
+            padding: 20px;
+            background: #FFF;
+        }
+        .cover-photo {
+            width: 100%;
+            border-radius: 6px;
+            border: 2px solid #CD5C5C;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* 文本区域 */
+        .content-area {
+            padding: 30px;
+        }
+
+        .invite-text {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .names {
+            font-size: 2em;
+            color: #A52A2A;
+            font-weight: bold;
+            margin: 10px;
+            letter-spacing: 4px;
+        }
+
+        .detail-line {
+            font-size: 1.1em;
+            margin: 12px 0;
+            line-height: 1.8;
+        }
+
+        .highlight-red {
+            font-size: 1.4em;
+            color: #A52A2A;
+            margin-top: 25px;
+        }
+
+        .contact-info {
+            border-top: 1px dashed #CD5C5C;
+            border-bottom: 1px dashed #CD5C5C;
+            padding: 12px;
+            margin-top: 22px;
+            font-size: 1em;
+        }
+
+        /* 按钮 */
+        .button-group {
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: block;
+            padding: 12px;
+            margin: 12px auto;
+            max-width: 80%;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+        }
+
+        .btn-rsvp { background:#CD5C5C; }
+        .btn-map { background:#8B4513; color:#FFD700; }
+
+        .footer-line {
+            margin-top: 25px;
+            font-size: 1.2em;
+            color: #A52A2A;
+        }
+
+        /* 音乐区 */
+        .music-control-area {
+            background:#FFF7F2;
+            padding:15px 0;
+        }
+        .music-button {
+            background:#CD5C5C;
+            padding:8px 18px;
+            border:none;
+            border-radius:6px;
+            color:white;
+            font-size:1em;
+            cursor:pointer;
+        }
+
+    </style>
+
+    <script>
+        function toggleMusic() {
+            var music = document.getElementById('background-music');
+            var btn = document.querySelector('.music-button');
+
+            if (music.paused) {
+                music.play();
+                btn.innerHTML = "🎵 播放中 💖";
+            } else {
+                music.pause();
+                btn.innerHTML = "▶️ 点击播放 💖";
+            }
+        }
+
+        window.onload = function() {
+            var music = document.getElementById('background-music');
+            var btn = document.querySelector('.music-button');
+
+            music.play()
+              .then(()=> btn.innerHTML="🎵 播放中 💖")
+              .catch(()=> btn.innerHTML="▶️ 点击播放 💖");
+        };
+    </script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header-bg">
+        <p>WELCOME TO THE WEDDING</p>
+        <h1 class="title-main">多子多福有借喜</h1>
+    </div>
+
+    <div class="music-control-area">
+        <audio id="background-music"
+               src="https://mp3-128.cdn.ncslibrary.nichion.co.jp/NTX037-011_128.mp3"
+               loop>
+        </audio>
+        <button onclick="toggleMusic()" class="music-button">▶️ 点击播放 💖</button>
+    </div>
+
+    <div class="photo-container">
+        <img src="请替换为你们的婚纱照URL" class="cover-photo">
+    </div>
+
+    <div class="content-area">
+        <p class="invite-text">诚邀您前来参加</p>
+
+        <p class="names">吴濯 & 左婉馨</p>
+        <p class="invite-text">结婚典礼</p>
+
+        <div style="height:1px;background:#D2B48C;width:60%;margin:25px auto;"></div>
+
+        <p class="detail-line">公历：<span style="color:#A52A2A;">请填写日期</span></p>
+        <p class="detail-line">典礼时间：<span style="color:#A52A2A;">请填写时间</span></p>
+
+        <h3 class="highlight-red">敬备喜筵 恭候光临</h3>
+
+        <p class="detail-line">
+            婚宴地点：<b>请填写宴会厅</b><br>
+            请填写地址
+        </p>
+
+        <div class="contact-info">
+            新郎 吴濯：[电话]　|　新娘 左婉馨：[电话]
+        </div>
+
+        <div class="button-group">
+            <a class="btn btn-rsvp" target="_blank" href="#">💖 确认出席回执</a>
+            <a class="btn btn-map" target="_blank" href="#">📍 导航地图</a>
+        </div>
+
+        <p class="footer-line">吴濯 & 左婉馨 夫妇敬邀</p>
+    </div>
+</div>
+
+</body>
+</html>
