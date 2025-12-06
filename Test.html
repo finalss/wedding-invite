@@ -5,146 +5,318 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>诚邀您前来参加 吴濯 & 左婉馨 答谢宴</title>
 
+<!-- Google Font：婚礼标题字体 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+
 <style>
-@font-face{font-family:'WebKai';src:url('https://finalss.github.io/wedding-invite/font/kaiti.woff2') format('woff2');font-display:swap}
-:root{--accent:#A52A2A;--card-bg:rgba(255,255,255,0.08);--card-bg-2:rgba(255,255,255,0.12)}
-html,body{height:100%;margin:0;padding:0}
-body{position:relative;min-height:100%;font-family:'WebKai','KaiTi','STKaiti','Noto Serif SC',serif;color:#333;-webkit-font-smoothing:antialiased}
+/* —— 颜色 —— */
+:root{
+  --accent:#b36b59;
+  --card-bg:rgba(255,255,255,0.25);
+  --glass:blur(12px);
+}
 
-body::before{content:"";position:fixed;inset:0;z-index:-2;background-image:url('https://finalss.github.io/wedding-invite/bk.jpg');background-size:cover;background-repeat:no-repeat;background-position:center top}
-body::after{content:"";position:fixed;inset:0;background:rgba(255,250,246,0.55);backdrop-filter:blur(2px);z-index:-1}
+/* —— 基础 —— */
+html,body{
+  height:100%;
+  margin:0;
+  padding:0;
+}
 
-.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 16px}
-.container{width:92%;max-width:580px;margin:0 auto}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",
+  "Noto Serif SC",serif;
+  font-size:17px;
+  color:#333;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+}
 
-.panel{background:var(--card-bg);border-radius:18px;padding:16px;box-shadow:0 8px 30px rgba(0,0,0,0.12);backdrop-filter:blur(6px)}
+/* —— 背景 —— */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:url('https://finalss.github.io/wedding-invite/bk.jpg');
+  background-size:cover;
+  background-position:center top;
+  z-index:-2;
+}
 
-#music-floating{position:fixed;right:18px;top:18px;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.7);backdrop-filter:blur(6px);box-shadow:0 6px 18px rgba(0,0,0,0.18);cursor:pointer;z-index:60}
-#music-floating.playing{transform:rotate(18deg)}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(255,245,236,0.78);
+  backdrop-filter:blur(6px);
+  z-index:-1;
+}
 
-.cover-photo-container{width:100%;height:340px;overflow:hidden;border-radius:12px}
-.cover-photo{width:100%;height:100%;object-fit:cover;filter:brightness(92%)}
+/* —— 布局 —— */
+.wrap{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px 16px;
+}
 
-.heart-icon{font-size:1.6rem;color:var(--accent);margin-top:18px}
-.title-main{font-size:2.4rem;margin:8px 0;color:#7a1d1d}
-.title-names{font-size:1.8rem;color:var(--accent);font-weight:700;margin-bottom:6px}
-.title-line{height:2px;width:56%;margin:12px auto;background:linear-gradient(90deg,#DDA0DD,var(--accent));border-radius:99px}
-.title-slogan{color:#555;margin-top:6px}
+.container{
+  width:92%;
+  max-width:580px;
+  margin:0 auto;
+}
 
-.details-card{background:rgba(255,255,255,0.72);padding:18px;border-radius:12px;margin-top:16px;border:1px solid #efe0d8}
-.section-title{font-size:1.25rem;color:#4C2B29;display:inline-block;padding-bottom:6px;border-bottom:2px solid #EEDDDD}
-.detail-item{margin:12px 0;font-size:1rem}
-.detail-title{color:var(--accent);font-weight:700}
+/* —— 卡片 —— */
+.panel{
+  background:var(--card-bg);
+  border-radius:18px;
+  padding:0;
+  overflow:hidden;
+  box-shadow:0 8px 30px rgba(0,0,0,0.12);
+  backdrop-filter:var(--glass);
+  animation:fadeUp 600ms cubic-bezier(.2,.9,.3,1);
+}
 
-.map-area{margin-top:12px;border-radius:10px;overflow:hidden}
-.map-area iframe{width:100%;height:240px;border:0}
+/* —— 封面图 —— */
+.cover-photo-container{
+  width:100%;
+  height:300px;
+  overflow:hidden;
+}
+.cover-photo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(90%);
+}
 
-.footer{padding:12px;text-align:center;color:#777}
+/* —— 标题 —— */
+.title-box{
+  text-align:center;
+  padding:20px 20px 10px;
+}
 
+.heart-icon{
+  font-size:1.4rem;
+  color:var(--accent);
+  margin:8px 0;
+}
+
+.title-main{
+  font-family:"Noto Serif SC",serif;
+  font-weight:900;
+  font-size:2rem;
+  color:#8c3b2e;
+}
+
+.title-names{
+  font-family:"Noto Serif SC",serif;
+  font-size:1.4rem;
+  font-weight:900;
+  color:var(--accent);
+}
+
+.title-line{
+  height:2px;
+  width:50%;
+  margin:10px auto;
+  background:linear-gradient(90deg,#ddb5aa,var(--accent));
+  border-radius:99px;
+}
+
+/* —— 信息卡片 —— */
+.details-card{
+  background:rgba(255,255,255,0.7);
+  padding:18px;
+  border-radius:0 0 18px 18px;
+  border-top:1px solid #f2e5df;
+}
+
+.section-title{
+  font-family:"Noto Serif SC",serif;
+  font-weight:900;
+  font-size:1.2rem;
+  padding-bottom:6px;
+  color:#4C2B29;
+  border-bottom:2px solid #EEDDDD;
+}
+
+.detail-item{
+  margin:12px 0;
+  font-size:1rem;
+}
+
+.detail-title{
+  color:var(--accent);
+  font-weight:700;
+}
+
+/* —— 地图按钮 —— */
+.btn-map{
+  display:inline-block;
+  padding:12px 20px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#ffffff,#f7eeee);
+  color:var(--accent);
+  border:1px solid #c49a9a;
+  text-decoration:none;
+  font-weight:700;
+  box-shadow:0 4px 10px rgba(0,0,0,0.12);
+  transition:0.25s;
+  position:relative;
+  overflow:hidden;
+}
+
+.btn-map:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px rgba(0,0,0,0.18);
+}
+
+.btn-map::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.6) 50%,rgba(255,255,255,0) 100%);
+  transition:0.6s;
+}
+.btn-map:hover::after{
+  left:100%;
+}
+
+/* —— 花瓣 —— */
 .petal{position:fixed;left:50%;top:-10vh;pointer-events:none;z-index:40}
-.petal svg{width:36px;height:36px;opacity:0.9}
-@keyframes fall{0%{transform:translateY(-10vh) rotate(0);opacity:0}10%{opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:1}}
+.petal svg{width:36px;height:36px;opacity:0.8;filter:blur(0.4px)}
+
+@keyframes fall{
+  0%{transform:translateY(-10vh) rotate(0) translateX(0)}
+  50%{transform:translateY(50vh) rotate(360deg) translateX(20px)}
+  100%{transform:translateY(110vh) rotate(720deg) translateX(-20px)}
+}
+
 .petal.animate{animation:fall linear infinite}
 
-.panel{animation:fadeUp 600ms cubic-bezier(.2,.9,.3,1)}
-@keyframes fadeUp{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+/* —— 动画 —— */
+@keyframes fadeUp{
+  from{transform:translateY(8px);opacity:0}
+  to{transform:none;opacity:1}
+}
 
-@media(max-width:480px){.cover-photo-container{height:220px}.title-main{font-size:1.6rem}.title-names{font-size:1.2rem}}
-  .btn-map{display:inline-block;padding:12px 20px;border-radius:12px;background:linear-gradient(135deg,#fff, #f7eeee);color:var(--accent);border:1px solid #c49a9a;text-decoration:none;font-weight:700;box-shadow:0 4px 10px rgba(0,0,0,0.12);transition:0.25s}
-  .btn-map:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.18)}
-  body::after{background:rgba(255,250,246,0.7);backdrop-filter:blur(4px)}
-  .panel{background:rgba(255,255,255,0.20);backdrop-filter:blur(10px)}
-  /* 高级字体 */
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap');
-  body{font-family:'Noto Serif SC','WebKai','KaiTi',serif}
-  .title-main,.title-names,.section-title{font-family:'Noto Serif SC','WebKai',serif;font-weight:900}
+/* —— 音乐按钮 —— */
+#music-floating{
+  position:fixed;
+  right:18px;
+  top:18px;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.7);
+  backdrop-filter:blur(6px);
+  box-shadow:0 6px 18px rgba(0,0,0,0.18);
+  cursor:pointer;
+  z-index:60;
+  font-size:20px;
+  font-weight:600;
+}
+#music-floating.playing{
+  transform:rotate(18deg);
+}
 
-  /* 按钮闪光动画 */
-  .btn-map{position:relative;overflow:hidden}
-  .btn-map::after{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(120deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.6) 50%,rgba(255,255,255,0) 100%);transition:0.6s}
-  .btn-map:hover::after{left:100%}
-
-  /* 色调升级：奶金婚礼风 */
-  :root{--accent:#b36b59}
-  .title-main{color:#8c3b2e}
-  body::after{background:rgba(255,245,236,0.78);backdrop-filter:blur(6px)}
-
-  /* 花瓣更柔和自然 */
-  @keyframes fall{0%{transform:translateY(-10vh) rotate(0) translateX(0)}50%{transform:translateY(50vh) rotate(360deg) translateX(20px)}100%{transform:translateY(110vh) rotate(720deg) translateX(-20px)}}
-  .petal svg{opacity:0.8;filter:blur(0.4px)}
+/* —— 适配手机 —— */
+@media(max-width:480px){
+  .cover-photo-container{height:220px}
+  .title-main{font-size:1.7rem}
+  .title-names{font-size:1.2rem}
+}
 </style>
 </head>
 <body>
 
-<div id="music-floating" title="播放/暂停音乐">♪</div>
+<!-- 音乐按钮 -->
+<div id="music-floating">♪</div>
 <audio id="bg-audio" src="https://finalss.github.io/wedding-invite/music.mp3" loop preload="metadata"></audio>
 
 <div class="wrap">
   <div class="container">
-      <div class="panel">
-        <div class="cover-photo-container">
-          <img src="https://finalss.github.io/wedding-invite/027.jpg" alt="新人封面合影" class="cover-photo" />
-        </div>
+    <div class="panel">
 
-        <div style="text-align:center;margin-top:10px">
-          <p class="heart-icon">诚邀您前来参加</p>
-          <div class="title-main">吴濯 & 左婉馨</div>
-          <div class="title-line"></div>
-          <div class="title-names">答谢宴</div>
-        </div>
-
-        <div class="details-card">
-          <h3 class="section-title">喜宴时间地点</h3>
-
-          <div class="detail-item"><span class="detail-title">喜宴日期：</span> 2026年1月2日（星期五）</div>
-          <div class="detail-item"><span class="detail-title">喜宴时间：</span> 11:58</div>
-          <div class="detail-item"><span class="detail-title">喜宴地址：</span> 镇江明都大酒店贵宾楼一楼阳光厅</div>
-
-          <div style="text-align:center;margin-top:12px">
-            <a class="btn-map" href="https://www.amap.com/search?query=%E9%95%87%E6%B1%9F%E6%98%8E%E9%83%BD%E5%A4%A7%E9%A5%AD%E5%BA%97&city=110000&geoobj=115.14885%7C39.26088%7C118.379683%7C40.59423&zoom=9.29" 
-              target="_blank">导航地图</a>
-          </div>
-        </div>
-
+      <!-- 封面图 -->
+      <div class="cover-photo-container">
+        <img src="https://finalss.github.io/wedding-invite/027.jpg" class="cover-photo" />
       </div>
+
+      <!-- 标题区 -->
+      <div class="title-box">
+        <p class="heart-icon">诚邀您前来参加</p>
+        <div class="title-main">吴濯 & 左婉馨</div>
+        <div class="title-line"></div>
+        <div class="title-names">答谢宴</div>
+      </div>
+
+      <!-- 信息卡片 -->
+      <div class="details-card">
+        <h3 class="section-title">喜宴时间地点</h3>
+
+        <div class="detail-item"><span class="detail-title">喜宴日期：</span> 2026年1月2日（星期五）</div>
+        <div class="detail-item"><span class="detail-title">喜宴时间：</span> 11:58</div>
+        <div class="detail-item"><span class="detail-title">喜宴地址：</span> 镇江明都大酒店 贵宾楼一楼阳光厅</div>
+
+        <div style="text-align:center;margin-top:14px">
+          <a class="btn-map" 
+            target="_blank"
+            href="https://www.amap.com/search?query=%E9%95%87%E6%B1%9F%E6%98%8E%E9%83%BD%E5%A4%A7%E9%A5%AD%E5%BA%97">
+            导航地图
+          </a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 
+<!-- 花瓣模板 -->
 <template id="petal-tpl">
-  <div class="petal" aria-hidden="true">
-    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="#F8BBD0" d="M32 2c6 0 14 4 16 10 2 6-4 10-6 16s4 12-4 16c-8 4-14-2-20-6C14 34 8 28 8 20 8 8 26 2 32 2z"/></svg>
+  <div class="petal">
+    <svg viewBox="0 0 64 64">
+      <path fill="#F8BBD0" d="M32 2c6 0 14 4 16 10 2 6-4 10-6 16s4 12-4 16c-8 4-14-2-20-6C14 34 8 28 8 20 8 8 26 2 32 2z"/>
+    </svg>
   </div>
 </template>
 
 <script>
-const audio = document.getElementById('bg-audio');
-const musicBtn = document.getElementById('music-floating');
+/* —— 音乐控制 —— */
+const audio=document.getElementById('bg-audio');
+const musicBtn=document.getElementById('music-floating');
 
 function tryPlay(){
-  audio.play().then(()=>{
-    musicBtn.classList.add('playing');
-  }).catch(()=>{});
+  audio.play().then(()=>{musicBtn.classList.add('playing');}).catch(()=>{});
 }
-
 window.addEventListener('load', tryPlay);
 
-musicBtn.addEventListener('click', ()=>{
+musicBtn.onclick=function(){
   if(audio.paused){audio.play();musicBtn.classList.add('playing');}
   else{audio.pause();musicBtn.classList.remove('playing');}
+};
+
+document.addEventListener('touchstart', function auto(){
+  if(audio.paused){audio.play().catch(()=>{});}
+  document.removeEventListener('touchstart', auto);
 });
 
-document.addEventListener('touchstart', function autoPlay(){
-  if(audio.paused){audio.play().catch(()=>{});}  
-  document.removeEventListener('touchstart', autoPlay);
-});
-
+/* —— 花瓣 —— */
 function spawnPetal(){
-  const tpl = document.getElementById('petal-tpl');
-  const petal = tpl.content.firstElementChild.cloneNode(true);
-  const size = Math.random()*0.6 + 0.4;
-  petal.style.left = Math.random()*100 + 'vw';
-  petal.style.animationDuration = (Math.random()*6+6)+'s';
-  petal.style.transform = `scale(${size})`;
+  const tpl=document.getElementById('petal-tpl');
+  const petal=tpl.content.firstElementChild.cloneNode(true);
+  const size=Math.random()*0.6+0.4;
+  petal.style.left=Math.random()*100+'vw';
+  petal.style.animationDuration=(Math.random()*6+6)+'s';
+  petal.style.transform=`scale(${size})`;
   petal.classList.add('animate');
   document.body.appendChild(petal);
   setTimeout(()=>petal.remove(),15000);
