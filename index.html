@@ -10,18 +10,39 @@
 @font-face{font-family:'WebKai';src:url('https://finalss.github.io/wedding-invite/font/kaiti.woff2') format('woff2');font-display:swap}
 :root{--accent:#A52A2A;--card-bg:rgba(255,255,255,0.18);--card-bg-2:rgba(255,255,255,0.82)}
 html,body{height:100%;margin:0;padding:0}
-body{
-  font-family:'WebKai', 'KaiTi','STKaiti','Noto Serif SC',serif;
-background-image: url('https://finalss.github.io/wedding-invite/bk.jpg');
-background-size: cover;   /* 关键：铺满整个屏幕 */
-background-repeat: no-repeat;
-background-position: center top;
-background-attachment: scroll; /* iPhone 不支持 fixed，避免截断问题 */
-color: #333;
--webkit-font-smoothing: antialiased;
+body {
+  position: relative;
+  min-height: 100%;
+  font-family:'WebKai','KaiTi','STKaiti','Noto Serif SC',serif;
+  color:#333;
+  -webkit-font-smoothing: antialiased;
 }
-/* 背景柔光罩 */
-body::before{content:'';position:fixed;inset:0;background:rgba(255,250,246,0.55);backdrop-filter:blur(2px);z-index:-1}
+
+/* 无限高度背景，彻底解决 iPhone 滚动到底部出现白块的问题 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+  
+  background-image: url('https://finalss.github.io/wedding-invite/bk.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+/* 柔光蒙版保持不变（放在 ::after 层之上） */
+body::after {
+  content:"";
+  position: fixed;
+  inset:0;
+  background: rgba(255,250,246,0.55);
+  backdrop-filter: blur(2px);
+  z-index:-1;
+}
 
 /* 页面布局 */
 .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 16px}
@@ -207,6 +228,7 @@ setInterval(spawnPetal, 1200);
 
 </body>
 </html>
+
 
 
 
