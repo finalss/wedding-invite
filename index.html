@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>爱的邀请 | 吴濯 & 左婉馨 婚礼</title>
+    <title>爱的邀请 | 吴濯 & 左婉馨 答谢宴</title>
     <style>
         /* 1. 基础样式和字体 */
+        /* 引入华文行楷，如果本地没有则降级到宋体或 sans-serif */
         body {
             font-family: 'Microsoft YaHei', 'SimSun', sans-serif;
             margin: 0;
@@ -60,9 +61,9 @@
 
         /* 封面文字叠加 */
         .cover-text {
-            position: static; /* 调整为静态以更好地居中 */
+            position: static; 
             padding: 20px 0;
-            width: 90%; /* 增加宽度，但仍居中 */
+            width: 90%; 
             margin: 0 auto;
             color: #4C2B29;
         }
@@ -73,18 +74,22 @@
             margin-bottom: 5px;
         }
 
+        /* **重要改动：标题字体改为华文行楷** */
         .title-main {
-            font-family: 'SimSun', serif;
-            font-size: 3em;
+            font-family: 'STXingkai', 'SimSun', serif; /* 华文行楷 */
+            font-size: 3.5em; /* 增大以适应行楷笔画 */
             line-height: 1;
             margin: 5px 0 10px 0;
             font-weight: normal;
         }
+        /* **重要改动：姓名字体改为华文行楷** */
         .title-names {
-            font-size: 2.5em;
-            margin: 5px 0 10px 0;
+            font-family: 'STXingkai', 'SimSun', serif; /* 华文行楷 */
+            font-size: 3em; /* 增大以适应行楷笔画 */
+            margin: 10px 0 15px 0;
             color: #A52A2A; 
         }
+        
         .title-line {
             height: 2px;
             width: 50%;
@@ -198,22 +203,35 @@
     <script>
         function toggleMusic() {
             var music = document.getElementById('background-music');
+            var button = document.querySelector('.music-button');
             if (music.paused) {
-                music.play();
+                music.play().then(() => {
+                    button.innerHTML = '🎵 播放中 💖';
+                }).catch(error => {
+                    button.innerHTML = '⚠️ 无法播放 💖';
+                    console.error("Autoplay failed:", error);
+                });
             } else {
                 music.pause();
+                button.innerHTML = '🔇 暂停 💖';
             }
         }
-        // 尝试在页面加载完成后播放，以绕过某些PC端的限制
+        
         window.onload = function() {
             var music = document.getElementById('background-music');
-            var playPromise = music.play();
+            var button = document.querySelector('.music-button');
             
-            // 捕捉未被用户允许的自动播放错误
+            // 尝试播放，并在失败时更新按钮状态
+            var playPromise = music.play();
             if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    // 如果自动播放被阻止，则安静失败，等待用户手动点击
+                playPromise.then(() => {
+                    button.innerHTML = '🎵 播放中 💖';
+                }).catch(error => {
+                    button.innerHTML = '▶️ 点击播放 💖';
+                    // 音乐可能因为浏览器限制无法自动播放，等待用户点击
                 });
+            } else {
+                 button.innerHTML = '▶️ 点击播放 💖';
             }
         }
     </script>
@@ -223,9 +241,9 @@
     <div class="container">
         
         <div class="music-control-area">
-            <audio id="background-music" src="[请替换为您的MP3音乐文件URL]" loop></audio>
+            <audio id="background-music" src="https://mp3-128.cdn.ncslibrary.nichion.co.jp/NTX037-011_128.mp3" loop></audio>
             <button onclick="toggleMusic()" class="music-button">
-                🎵 播放/暂停 💖
+                ▶️ 点击播放 💖
             </button>
         </div>
 
@@ -236,7 +254,7 @@
             
             <div class="cover-text">
                 <p class="heart-icon">💍 爱的邀请 💖</p>
-                <p class="title-main">谨邀</p>
+                <h1 class="title-main">谨邀</h1>
                 <p class="title-names">吴濯 & 左婉馨</p>
                 <div class="title-line"></div>
                 <p class="title-slogan">余生漫漫，幸得有你。诚邀您见证我们的幸福时刻。</p>
