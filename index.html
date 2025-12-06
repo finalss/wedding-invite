@@ -13,10 +13,12 @@ html,body{height:100%;margin:0;padding:0}
 body{
   font-family:'WebKai', 'KaiTi','STKaiti','Noto Serif SC',serif;
 background-image: url('https://finalss.github.io/wedding-invite/bk.jpg');
-background-size: cover;
+background-size: cover;   /* 关键：铺满整个屏幕 */
 background-repeat: no-repeat;
 background-position: center top;
-background-attachment: scroll; 
+background-attachment: scroll; /* iPhone 不支持 fixed，避免截断问题 */
+color: #333;
+-webkit-font-smoothing: antialiased;
 }
 /* 背景柔光罩 */
 body::before{content:'';position:fixed;inset:0;background:rgba(255,250,246,0.55);backdrop-filter:blur(2px);z-index:-1}
@@ -115,9 +117,9 @@ body::before{content:'';position:fixed;inset:0;background:rgba(255,250,246,0.55)
         <div class="details-card">
           <h3 class="section-title">🗓 婚礼时间地点</h3>
 
-          <div class="detail-item"><span class="detail-title">婚礼日期：</span> 2026年1月2日（星期五）</div>
-          <div class="detail-item"><span class="detail-title">典礼时间：</span> 中午 12:00（11:30 恭候入场）</div>
-          <div class="detail-item"><span class="detail-title">婚宴地点：</span> 明都大酒店<br>江苏省镇江市京口区智慧大道470号</div>
+          <div class="detail-item"><span class="detail-title">喜宴日期：</span> 2026年1月2日（星期五）</div>
+          <div class="detail-item"><span class="detail-title">喜宴时间：</span> 中午 11:58</div>
+          <div class="detail-item"><span class="detail-title">喜宴地址：</span> 镇江明都大酒店贵宾楼一楼阳光厅</div>
 
           <div style="text-align:center;margin-top:12px">
             <a class="btn-map" href="https://www.amap.com/search?query=%E9%95%87%E6%B1%9F%E6%98%8E%E9%83%BD%E5%A4%A7%E9%A5%AD%E5%BA%97" target="_blank" style="display:inline-block;padding:10px 14px;border-radius:8px;background:#fff;color:var(--accent);border:1px solid var(--accent);text-decoration:none;font-weight:700">📍 导航地图</a>
@@ -170,6 +172,7 @@ for(let i=0;i<5;i++){setTimeout(spawnPetal,i*300)}
 
 </body>
 </html>
+
 
 
 
