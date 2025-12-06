@@ -213,6 +213,21 @@ isPlaying = false;
 }
 });
 
+// 移动端“伪自动播放” —— 用户首次触摸页面时自动播放
+document.addEventListener('touchstart', function autoPlay() {
+    const music = document.getElementById("background-music");
+    const button = document.querySelector(".music-button");
+
+    if (music.paused) {
+        music.play().then(() => {
+            button.innerHTML = "播放中";
+        }).catch(()=>{});
+    }
+
+    // 首次触摸后就移除监听，避免反复触发
+    document.removeEventListener('touchstart', autoPlay);
+});  
+
 
 // 花瓣飘落效果（保持不动）
 function spawnPetal(){
@@ -231,3 +246,4 @@ setInterval(spawnPetal, 1200);
 
 </body>
 </html>
+
