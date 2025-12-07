@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>诚邀您前来参加 吴濯 & 左婉馨 答谢宴</title>
   
-<!-- Google Font：婚礼标题字体 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
   
 <style>
 @font-face{font-family:'WebKai';src:url('https://finalss.github.io/wedding-invite/font/kaiti.woff2') format('woff2');font-display:swap}
 :root{--accent:#A52A2A;--card-bg:rgba(255,255,255,0.08);--card-bg-2:rgba(255,255,255,0.12)}
 html,body{height:100%;margin:0;padding:0}
-body{position:relative;min-height:100%;font-family:'WebKai','KaiTi','STKaiti','Noto Serif SC',serif;color:#333;-webkit-font-smoothing:antialiased}
+/* 更改了 body 的 font-family，将 Noto Serif SC 放在首位 */
+body{position:relative;min-height:100%;font-family:'Noto Serif SC', 'WebKai','KaiTi','STKaiti',serif;color:#333;-webkit-font-smoothing:antialiased}
 
 body::before{content:"";position:fixed;inset:0;z-index:-2;background-image:url('https://finalss.github.io/wedding-invite/bk.jpg');background-size:cover;background-repeat:no-repeat;background-position:center top}
 body::after{content:"";position:fixed;inset:0;background:rgba(255,250,246,0.55);backdrop-filter:blur(2px);z-index:-1}
@@ -134,4 +134,3 @@ setInterval(spawnPetal,1200);
 
 </body>
 </html>
-
